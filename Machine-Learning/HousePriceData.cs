@@ -17,41 +17,41 @@ namespace Machine_Learning
         [LoadColumn(2), ColumnName("Label")]
         public float price { get; set; }
         [LoadColumn(3)]
-        public float bedrooms { get; set; }
+        public int bedrooms { get; set; }
         [LoadColumn(4)]
-        public float bathrooms { get; set; }
+        public int bathrooms { get; set; }
         [LoadColumn(5)]
-        public float sqft_living { get; set; }
+        public int sqft_living { get; set; }
         [LoadColumn(6)]
-        public float sqft_lot { get; set; }
+        public int sqft_lot { get; set; }
         [LoadColumn(7)]
-        public float floors { get; set; }
+        public int floors { get; set; }
         [LoadColumn(8)]
-        public float waterfront { get; set; }
+        public int waterfront { get; set; }
         [LoadColumn(9)]
-        public float view { get; set; }
+        public int view { get; set; }
         [LoadColumn(10)]
-        public float condition { get; set; }
+        public int condition { get; set; }
         [LoadColumn(11)]
-        public float grade { get; set; }
+        public int grade { get; set; }
         [LoadColumn(12)]
-        public float sqft_above { get; set; }
+        public int sqft_above { get; set; }
         [LoadColumn(13)]
-        public float sqft_basement { get; set; }
+        public int sqft_basement { get; set; }
         [LoadColumn(14)]
-        public float yr_built { get; set; }
+        public int yr_built { get; set; }
         [LoadColumn(15)]
-        public float yr_renovated { get; set; }
+        public int yr_renovated { get; set; }
         [LoadColumn(16)]
-        public float zipcode { get; set; }
+        public int zipcode { get; set; }
         [LoadColumn(17)]
-        public float lat { get; set; }
+        public int lat { get; set; }
         [LoadColumn(18)]
-        public float long1 { get; set; }
+        public int long1 { get; set; }
         [LoadColumn(19)]
-        public float sqft_living15 { get; set; }
+        public int sqft_living15 { get; set; }
         [LoadColumn(20)]
-        public float sqft_lot15 { get; set; }
+        public int sqft_lot15 { get; set; }
         public void LoadDataset()
         {
             MLContext context = new MLContext();
@@ -74,7 +74,43 @@ namespace Machine_Learning
 
             var metrics = context.Regression.Evaluate(predictions);
 
-            Console.WriteLine($"R^2 {metrics.RSquared}");
+            Console.WriteLine($"R^2 the rsquare coefficient value of this model is: {metrics.RSquared}");
+
+            var predictionData = context.Model.CreatePredictionEngine<HousePriceData, Output>(mLModel);
+
+            var input = new HousePriceData
+            {
+                id = 7129300520,
+                date = "2014-10-13",
+                price = 221900,
+                bedrooms = 3,
+                bathrooms = 1,
+                sqft_living = 1180,
+                sqft_lot = 5650,
+                floors = 1,
+                waterfront = 0,
+                view = 0,
+                condition = 3,
+                grade = 7,
+                sqft_above = 1180,
+                sqft_basement = 0,
+                yr_built = 1955,
+                yr_renovated = 0,
+                zipcode = 98178,
+                lat = 47,
+                long1 = -122,
+                sqft_living15 = 1340,
+                sqft_lot15 = 5650
+
+            };
+
+            var predictionWithData = predictionData.Predict(input);
+
+            Console.WriteLine($"The predicted price of the house is {predictionWithData.Score}");
         }
+    }
+    public class Output
+    {
+        public float Score { get; set; }
     }
 }
