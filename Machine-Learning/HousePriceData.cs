@@ -10,48 +10,48 @@ namespace Machine_Learning
 {
     public class HousePriceData
     {
-        [LoadColumn(0)]
-        public float id { get; set; }
-        [LoadColumn(1)]
-        public string date { get; set; }
+        //[LoadColumn(0)]
+        //public float Id { get; set; }
+        //[LoadColumn(1)]
+        //public string Date { get; set; }
         [LoadColumn(2), ColumnName("Label")]
-        public float price { get; set; }
+        public float Price { get; set; }
         [LoadColumn(3)]
-        public int bedrooms { get; set; }
+        public int Bedrooms { get; set; }
         [LoadColumn(4)]
-        public int bathrooms { get; set; }
+        public int Bathrooms { get; set; }
         [LoadColumn(5)]
-        public int sqft_living { get; set; }
+        public int Sqft_living { get; set; }
         [LoadColumn(6)]
-        public int sqft_lot { get; set; }
+        public int Sqft_lot { get; set; }
         [LoadColumn(7)]
-        public int floors { get; set; }
+        public int Floors { get; set; }
         [LoadColumn(8)]
-        public int waterfront { get; set; }
+        public int Waterfront { get; set; }
         [LoadColumn(9)]
-        public int view { get; set; }
-        [LoadColumn(10)]
-        public int condition { get; set; }
+        public int View { get; set; }
+        //[LoadColumn(10)]
+        //public int Condition { get; set; }
         [LoadColumn(11)]
-        public int grade { get; set; }
+        public string Grade { get; set; }
         [LoadColumn(12)]
-        public int sqft_above { get; set; }
+        public int Sqft_above { get; set; }
         [LoadColumn(13)]
-        public int sqft_basement { get; set; }
-        [LoadColumn(14)]
-        public int yr_built { get; set; }
-        [LoadColumn(15)]
-        public int yr_renovated { get; set; }
-        [LoadColumn(16)]
-        public int zipcode { get; set; }
-        [LoadColumn(17)]
-        public int lat { get; set; }
-        [LoadColumn(18)]
-        public int long1 { get; set; }
+        public int Sqft_basement { get; set; }
+        //[LoadColumn(14)]
+        //public int Yr_built { get; set; }
+        //[LoadColumn(15)]
+        //public int Yr_renovated { get; set; }
+        //[LoadColumn(16)]
+        //public int Zipcode { get; set; }
+        //[LoadColumn(17)]
+        //public int Lat { get; set; }
+        //[LoadColumn(18)]
+        //public int Long1 { get; set; }
         [LoadColumn(19)]
-        public int sqft_living15 { get; set; }
-        [LoadColumn(20)]
-        public int sqft_lot15 { get; set; }
+        public int Sqft_living15 { get; set; }
+        //[LoadColumn(20)]
+        //public int Sqft_lot15 { get; set; }
         public void LoadDataset()
         {
             MLContext context = new MLContext();
@@ -64,7 +64,7 @@ namespace Machine_Learning
             var trainData = split.TrainSet;
             var testData = split.TestSet;
 
-            var pipeline = context.Transforms.Text.FeaturizeText("Text", "date")
+            var pipeline = context.Transforms.Text.FeaturizeText("Text", "Grade")
                 .Append(context.Transforms.Concatenate("Features", "Text"))
                 .Append(context.Regression.Trainers.Sdca());
 
@@ -74,33 +74,33 @@ namespace Machine_Learning
 
             var metrics = context.Regression.Evaluate(predictions);
 
-            Console.WriteLine($"R^2 the rsquare coefficient value of this model is: {metrics.RSquared}");
+            Console.WriteLine($"R^2 the RSquare coefficient value of this model is: {metrics.RSquared}");
 
             var predictionData = context.Model.CreatePredictionEngine<HousePriceData, Output>(mLModel);
 
             var input = new HousePriceData
             {
-                id = 7129300520,
-                date = "2014-10-13",
-                price = 221900,
-                bedrooms = 3,
-                bathrooms = 1,
-                sqft_living = 1180,
-                sqft_lot = 5650,
-                floors = 1,
-                waterfront = 0,
-                view = 0,
-                condition = 3,
-                grade = 7,
-                sqft_above = 1180,
-                sqft_basement = 0,
-                yr_built = 1955,
-                yr_renovated = 0,
-                zipcode = 98178,
-                lat = 47,
-                long1 = -122,
-                sqft_living15 = 1340,
-                sqft_lot15 = 5650
+                //Id = 7129300520,
+                //Date = "2014-10-13",
+                Price = 221900,
+                Bedrooms = 3,
+                Bathrooms = 1,
+                Sqft_living = 1180,
+                Sqft_lot = 5650,
+                Floors = 1,
+                Waterfront = 0,
+                View = 0,
+                //Condition = 3,
+                //Grade = 7,
+                Sqft_above = 1180,
+                Sqft_basement = 0,
+                //Yr_built = 1955,
+                //Yr_renovated = 0,
+                //Zipcode = 98178,
+                //Lat = 47,
+                //Long1 = -122,
+                Sqft_living15 = 1340,
+                //Sqft_lot15 = 5650
 
             };
 
