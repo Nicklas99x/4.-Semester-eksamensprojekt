@@ -11,7 +11,7 @@ namespace Machine_Learning
     {
         static void Main(string[] args)
         {
-            HousePriceData hpd = new HousePriceData();
+            MachineLearningModel hpd = new MachineLearningModel();
             hpd.LoadDataset();
             Console.ReadLine();
         }
