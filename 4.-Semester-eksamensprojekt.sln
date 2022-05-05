@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.32126.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Machine-Learning", "Machine-Learning\Machine-Learning.csproj", "{809C71A7-2245-4532-A14F-81D7F9CB0DC1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{CE3EAA11-80D3-4368-9780-2C364C00A02E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC", "MVC\MVC.csproj", "{8349D337-4712-4CED-B90D-D3D5B15D2F39}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{809C71A7-2245-4532-A14F-81D7F9CB0DC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{809C71A7-2245-4532-A14F-81D7F9CB0DC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{809C71A7-2245-4532-A14F-81D7F9CB0DC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE3EAA11-80D3-4368-9780-2C364C00A02E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE3EAA11-80D3-4368-9780-2C364C00A02E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE3EAA11-80D3-4368-9780-2C364C00A02E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE3EAA11-80D3-4368-9780-2C364C00A02E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8349D337-4712-4CED-B90D-D3D5B15D2F39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8349D337-4712-4CED-B90D-D3D5B15D2F39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8349D337-4712-4CED-B90D-D3D5B15D2F39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8349D337-4712-4CED-B90D-D3D5B15D2F39}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
