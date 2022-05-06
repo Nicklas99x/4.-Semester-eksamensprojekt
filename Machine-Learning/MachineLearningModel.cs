@@ -1,6 +1,9 @@
 ﻿using Microsoft.ML;
+using Microsoft.ML.Data;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,6 +27,17 @@ namespace Machine_Learning
         MLContext context = new MLContext();
         public void LoadDataset()
         {
+            //var connString = "Data Source=NICKLASPC;Initial Catalog=EksamensprojektDB;User ID=Machine-Learner25;Password=Mir@cleUser234987";
+            //SqlConnection connection = new SqlConnection(connString);
+            //string cmdText = "load_data";
+            //SqlCommand cmd = new SqlCommand(cmdText, connection);
+            //cmd.CommandType = CommandType.StoredProcedure;
+            //string sqlData = Convert.ToString(cmd);
+
+            //var dataLoader = context.Data.CreateDatabaseLoader<HousePriceData>();
+            //var dbSource = new DatabaseSource(SqlClientFactory.Instance, connString, sqlData);
+            //var data2 = dataLoader.Load(dbSource);
+
             IDataView data = context.Data.LoadFromTextFile<HousePriceData>("C:/Users/nicklas/source/repos/4.-Semester-eksamensprojekt/Machine-Learning/Data/kc_house_data.csv",
                 hasHeader: true,
                 separatorChar: ',');
