@@ -1,18 +1,14 @@
-﻿        //public static void LoadStoredProcedure()
+﻿        //public IDataView LoadDatasetFromDatabaseSource()
         //{
-        //    string connString = "Data Source=NICKLASPC;Initial Catalog=EksamensprojektDB;User ID=Machine-Learner25;Password=Mir@cleUser234987";
-
+        //    var connString = "Data Source=NICKLASPC;Initial Catalog=EksamensprojektDB;User ID=Machine-Learner25;Password=Mir@cleUser234987";
         //    SqlConnection connection = new SqlConnection(connString);
-        //    SqlCommand cmd = new SqlCommand("load_data", connection);
+        //    string cmdText = "load_data";
+        //    SqlCommand cmd = new SqlCommand(cmdText, connection);
         //    cmd.CommandType = CommandType.StoredProcedure;
-        //    connection.Open();
+        //    string sqlData = Convert.ToString(cmd);
 
-        //    using (SqlDataReader reader = cmd.ExecuteReader())
-        //    {
-        //        while (reader.Read())
-        //        {
-        //            string Id = reader["Id"].ToString();
-        //        }
-        //    }
-        //    connection.Close();
+        //    var dataLoader = context.Data.CreateDatabaseLoader<HousePriceData>();
+        //    var dbSource = new DatabaseSource(SqlClientFactory.Instance, connString, sqlData);
+        //    var data2 = dataLoader.Load(dbSource);
+        //    return data2;
         //}
