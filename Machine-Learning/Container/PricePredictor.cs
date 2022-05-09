@@ -26,7 +26,7 @@ namespace Machine_Learning
             _housePriceData = housePriceData;
             _predictionOutput = predictionOutput;
         }
-        public void MakePredictionWithTheModel(TransformerChain<RegressionPredictionTransformer<Microsoft.ML.Trainers.LinearRegressionModelParameters>> mLModel)
+        public Single MakePredictionWithTheModel(TransformerChain<RegressionPredictionTransformer<Microsoft.ML.Trainers.LinearRegressionModelParameters>> mLModel)
         {
             var predictionData = context.Model.CreatePredictionEngine<HousePriceData, PredictionOutput>(mLModel);
 
@@ -45,7 +45,8 @@ namespace Machine_Learning
                 Sqft_living15 = 4110
             };
             var predictionWithData = predictionData.Predict(input);
-            Console.WriteLine($"The predicted price of the house is {predictionWithData.Score}");
+            var predictionResult = predictionWithData.Score;
+            return predictionResult;
         }
     }
 }

@@ -12,12 +12,13 @@ namespace Machine_Learning.Container
     public class ModelEvaluator : IModelEvaluator
     {
         protected readonly MLContext context = new MLContext();
-        public void EvaluateModel(IDataView testData, TransformerChain<RegressionPredictionTransformer<Microsoft.ML.Trainers.LinearRegressionModelParameters>> mLModel)
+        public double EvaluateModel(IDataView testData, TransformerChain<RegressionPredictionTransformer<Microsoft.ML.Trainers.LinearRegressionModelParameters>> mLModel)
         {
             IDataView predictions = mLModel.Transform(testData);
             var metrics = context.Regression.Evaluate(predictions);
 
-            Console.WriteLine($"R^2 the RSquare coefficient value of this model is: {metrics.RSquared}");
+            var result = metrics.RSquared;
+            return result;
         }
     }
 }

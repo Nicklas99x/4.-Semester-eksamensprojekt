@@ -10,6 +10,6 @@ namespace Machine_Learning.Interfaces
 {
     public interface IModelEvaluator
     {
-        void EvaluateModel(IDataView testData, TransformerChain<RegressionPredictionTransformer<Microsoft.ML.Trainers.LinearRegressionModelParameters>> mLModel);
+        double EvaluateModel(IDataView testData, TransformerChain<RegressionPredictionTransformer<Microsoft.ML.Trainers.LinearRegressionModelParameters>> mLModel);
     }
 }

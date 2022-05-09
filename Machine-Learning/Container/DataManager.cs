@@ -23,7 +23,7 @@ namespace Machine_Learning.Container
             var trainData = split.TrainSet;
             return trainData;
         }
-        public IDataView CreateTestSet(IDataView trainData, DataOperationsCatalog.TrainTestData split)
+        public IDataView CreateTestSet(DataOperationsCatalog.TrainTestData split)
         {
             var testData = split.TestSet;
             return testData;

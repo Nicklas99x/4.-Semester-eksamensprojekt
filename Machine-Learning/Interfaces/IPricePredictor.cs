@@ -9,6 +9,6 @@ namespace Machine_Learning.Interfaces
 {
     public interface IPricePredictor
     {
-        void MakePredictionWithTheModel(TransformerChain<RegressionPredictionTransformer<Microsoft.ML.Trainers.LinearRegressionModelParameters>> mLModel);
+        Single MakePredictionWithTheModel(TransformerChain<RegressionPredictionTransformer<Microsoft.ML.Trainers.LinearRegressionModelParameters>> mLModel);
     }
 }

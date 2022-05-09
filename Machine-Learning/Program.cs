@@ -25,13 +25,14 @@ namespace Machine_Learning
             var data = dataLoader.LoadDataset();
             var split = dataManager.SplitDataIntoTwoGroups(data);
             var trainingData = dataManager.CreateTrainingSet(split);
-            var testData = dataManager.CreateTestSet(trainingData, split);
+            var testData = dataManager.CreateTestSet(split);
             var pipeline = mlPipeline.CreateMlPipeline();
             var mLModel = modelTrainer.TrainModel(trainingData, pipeline);
 
-            modelEvaluator.EvaluateModel(testData, mLModel);
-            pricePredictor.MakePredictionWithTheModel(mLModel);
-
+            var result = modelEvaluator.EvaluateModel(testData, mLModel);
+            var predictionResult = pricePredictor.MakePredictionWithTheModel(mLModel);
+            Console.WriteLine(result);
+            Console.WriteLine(predictionResult);
             //Console readline so that the program doesn't stop
             Console.ReadLine();
         }

@@ -1,4 +1,4 @@
-﻿        //public IDataView LoadDatasetFromDatabaseSource()
+﻿        //public IDataView LoadDataset()
         //{
         //    var connString = "Data Source=NICKLASPC;Initial Catalog=EksamensprojektDB;User ID=Machine-Learner25;Password=Mir@cleUser234987";
         //    SqlConnection connection = new SqlConnection(connString);
