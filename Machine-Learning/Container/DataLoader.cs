@@ -1,7 +1,10 @@
 ﻿using Machine_Learning.Interfaces;
 using Microsoft.ML;
+using Microsoft.ML.Data;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;

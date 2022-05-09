@@ -11,6 +11,6 @@ namespace Machine_Learning.Interfaces
     {
         DataOperationsCatalog.TrainTestData SplitDataIntoTwoGroups(IDataView data);
         IDataView CreateTrainingSet(DataOperationsCatalog.TrainTestData split);
-        IDataView CreateTestSet(IDataView trainData, DataOperationsCatalog.TrainTestData split);
+        IDataView CreateTestSet(DataOperationsCatalog.TrainTestData split);
     }
 }

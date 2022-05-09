@@ -1,3 +1,6 @@
+using Machine_Learning;
+using Machine_Learning.Container;
+using Machine_Learning.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +35,12 @@ namespace Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api", Version = "v1" });
             });
+            services.AddScoped<IDataLoader, DataLoader>();
+            services.AddScoped<IDataManager, DataManager>();
+            services.AddScoped<IMLPipeline, MlPipeline>();
+            services.AddScoped<IModelTrainer, ModelTrainer>();
+            services.AddScoped<IModelEvaluator, ModelEvaluator>();
+            services.AddScoped<IPricePredictor, PricePredictor>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
