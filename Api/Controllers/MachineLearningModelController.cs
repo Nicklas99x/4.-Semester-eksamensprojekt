@@ -1,4 +1,6 @@
-﻿using Machine_Learning.Interfaces;
+﻿using Application.Models;
+using Contract;
+using Machine_Learning.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.ML;
 using Microsoft.ML.Data;
@@ -15,57 +17,33 @@ namespace Api.Controllers
     [ApiController]
     public class MachineLearningModelController : ControllerBase
     {
-        protected readonly IDataLoader _dataLoader;
-        protected readonly IDataManager _dataManager;
-        protected readonly IMLPipeline _mlPipeline;
-        protected readonly IModelTrainer _modelTrainer;
-        protected readonly IModelEvaluator _modelEvaluator;
-        protected readonly IPricePredictor _pricePredictor;
+        protected IModelScoreRequestObject _requestObject;
 
-        public MachineLearningModelController(
-            IDataLoader dataLoader,
-            IDataManager dataManager, 
-            IMLPipeline mlPipeline,
-            IModelTrainer modelTrainer, 
-            IModelEvaluator modelEvaluator,
-            IPricePredictor pricePredictor)
+        public MachineLearningModelController(IModelScoreRequestObject requestObject)
         {
-            _dataLoader = dataLoader;
-            _dataManager = dataManager;
-            _mlPipeline = mlPipeline;
-            _modelTrainer = modelTrainer;
-            _modelEvaluator = modelEvaluator;
-            _pricePredictor = pricePredictor;
+            _requestObject = requestObject;
         }
-
-
-
         // GET: api/<MachineLearningModelController>
         [HttpGet("/ModelAccuracy")]
-        public double GetModelScore()
+        public ModelEvaluationDto GetModelScore()
         {
-            IDataView data = _dataLoader.LoadDataset();
-            DataOperationsCatalog.TrainTestData dataSplit = _dataManager.SplitDataIntoTwoGroups(data);
-            var trainData = _dataManager.CreateTrainingSet(dataSplit);
-            var testData = _dataManager.CreateTestSet(dataSplit);
-            var pipeline = _mlPipeline.CreateMlPipeline();
-            var mlModel = _modelTrainer.TrainModel(trainData, pipeline);
-            var result = _modelEvaluator.EvaluateModel(testData, mlModel);
-            return result;
+            var modelScore = _requestObject.getModel();
+
+            var modelDto = new ModelEvaluationDto();
+            {
+                modelDto.RSquare = modelScore.ModelEvaluation;
+                modelDto.PricePrediction = modelScore.ModelPricePrediction;
+            }
+            return modelDto;
         }
 
         // GET api/<MachineLearningModelController>/5
-        [HttpGet("/Price")]
-        public Single GetPredictedHousePrice()
-        {
-            IDataView data = _dataLoader.LoadDataset();
-            DataOperationsCatalog.TrainTestData dataSplit = _dataManager.SplitDataIntoTwoGroups(data);
-            var trainData = _dataManager.CreateTrainingSet(dataSplit);
-            var pipeline = _mlPipeline.CreateMlPipeline();
-            var mlModel = _modelTrainer.TrainModel(trainData, pipeline);
-            var predictedPrice = _pricePredictor.MakePredictionWithTheModel(mlModel);
-            return predictedPrice;
-        }
+        //[HttpGet("/Price")]
+        //public Single GetPredictedHousePrice()
+        //{
+            
+        //    return predictedPrice;
+        //}
 
         // POST api/<MachineLearningModelController>
         //[HttpPost]

@@ -1,3 +1,5 @@
+using Api.Controllers;
+using Application.Models;
 using Machine_Learning;
 using Machine_Learning.Container;
 using Machine_Learning.Interfaces;
@@ -41,6 +43,8 @@ namespace Api
             services.AddScoped<IModelTrainer, ModelTrainer>();
             services.AddScoped<IModelEvaluator, ModelEvaluator>();
             services.AddScoped<IPricePredictor, PricePredictor>();
+
+            services.AddScoped<IModelScoreRequestObject, ModelScoreRequestObject>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

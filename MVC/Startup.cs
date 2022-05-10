@@ -1,3 +1,5 @@
+using Contract.InterfaceServices;
+using Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -35,6 +37,10 @@ namespace MVC
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+
+            services.AddHttpClient();
+            
+            services.AddScoped<IModelEvaluationService, ModelEvaluationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
