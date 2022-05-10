@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Contract.InterfaceServices;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using MVC.Models;
 using System;
@@ -12,20 +13,23 @@ namespace MVC.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IModelEvaluationService _modelEvaluationService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IModelEvaluationService modelEvaluationService)
         {
             _logger = logger;
+            _modelEvaluationService = modelEvaluationService;
         }
 
         public IActionResult Index()
         {
             return View();
         }
-
-        public IActionResult Privacy()
+        [HttpGet]
+        public async Task<IActionResult> Privacy()
         {
-            return View();
+            var data = await _modelEvaluationService.GetModelScore();
+            return View(data);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

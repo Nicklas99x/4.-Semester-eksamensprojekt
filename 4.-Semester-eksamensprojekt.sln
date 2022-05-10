@@ -5,9 +5,15 @@ VisualStudioVersion = 16.0.32126.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Machine-Learning", "Machine-Learning\Machine-Learning.csproj", "{809C71A7-2245-4532-A14F-81D7F9CB0DC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Api", "Api\Api.csproj", "{CE3EAA11-80D3-4368-9780-2C364C00A02E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Api", "Api\Api.csproj", "{CE3EAA11-80D3-4368-9780-2C364C00A02E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC", "MVC\MVC.csproj", "{8349D337-4712-4CED-B90D-D3D5B15D2F39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MVC", "MVC\MVC.csproj", "{8349D337-4712-4CED-B90D-D3D5B15D2F39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contract", "Contract\Contract.csproj", "{D8E055E1-7F74-488D-B39B-F7EF70A16C32}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{A99E2993-CB64-4F0A-8E6F-32B27BBCCA23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{E746D222-DA7E-48D5-95A0-8DA5C4EB8384}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +33,18 @@ Global
 		{8349D337-4712-4CED-B90D-D3D5B15D2F39}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8349D337-4712-4CED-B90D-D3D5B15D2F39}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8349D337-4712-4CED-B90D-D3D5B15D2F39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8E055E1-7F74-488D-B39B-F7EF70A16C32}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8E055E1-7F74-488D-B39B-F7EF70A16C32}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8E055E1-7F74-488D-B39B-F7EF70A16C32}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8E055E1-7F74-488D-B39B-F7EF70A16C32}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A99E2993-CB64-4F0A-8E6F-32B27BBCCA23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A99E2993-CB64-4F0A-8E6F-32B27BBCCA23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A99E2993-CB64-4F0A-8E6F-32B27BBCCA23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A99E2993-CB64-4F0A-8E6F-32B27BBCCA23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E746D222-DA7E-48D5-95A0-8DA5C4EB8384}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E746D222-DA7E-48D5-95A0-8DA5C4EB8384}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E746D222-DA7E-48D5-95A0-8DA5C4EB8384}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E746D222-DA7E-48D5-95A0-8DA5C4EB8384}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
