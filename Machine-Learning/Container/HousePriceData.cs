@@ -27,7 +27,7 @@ namespace Machine_Learning
         [LoadColumn(9)]
         public float View { get; set; }
         [LoadColumn(11)]
-        public string Grade { get; set; }
+        public float Grade { get; set; }
         [LoadColumn(12)]
         public float Sqft_above { get; set; }
         [LoadColumn(13)]
