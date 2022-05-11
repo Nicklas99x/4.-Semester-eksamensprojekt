@@ -40,7 +40,7 @@ namespace Machine_Learning
                 Floors = 1,
                 Waterfront = 0,
                 View = 4,
-                Grade = "9",
+                Grade = 9,
                 Sqft_basement = 720,
                 Sqft_living15 = 4110
             };

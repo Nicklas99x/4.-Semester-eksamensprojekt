@@ -21,13 +21,18 @@ namespace Infrastructure
         {
             _httpClientFactory = httpClientFactory;
             _httpClient = _httpClientFactory.CreateClient();
-            _options = new JsonSerializerOptions();
+            _options = new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            };
+            
             _httpClient.BaseAddress = new Uri("https://localhost:44365");
         }
         async Task<ModelEvaluationDto> IModelEvaluationService.GetModelScore()
         {
             using (var response = await _httpClient.GetAsync("/ModelAccuracy", HttpCompletionOption.ResponseHeadersRead))
             {
+                
                 response.StatusCode.ToString();
                 var stream = await response.Content.ReadAsStreamAsync();                
                 var modelScore = await JsonSerializer.DeserializeAsync<ModelEvaluationDto>(stream, _options);

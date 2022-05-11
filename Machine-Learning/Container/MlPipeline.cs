@@ -14,7 +14,7 @@ namespace Machine_Learning.Container
         protected readonly MLContext context = new MLContext();
         public EstimatorChain<RegressionPredictionTransformer<Microsoft.ML.Trainers.LinearRegressionModelParameters>> CreateMlPipeline()
         {
-            var pipeline = context.Transforms.Text.FeaturizeText("Text", "Grade")
+            var pipeline = context.Transforms.Conversion.ConvertType("Text", "Grade", DataKind.Single)
                         .Append(context.Transforms.Concatenate("Features", "Text"))
                         .Append(context.Regression.Trainers.Sdca());
             return pipeline;
