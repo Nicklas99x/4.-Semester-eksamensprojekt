@@ -1,0 +1,9 @@
+﻿@model Contract.ModelEvaluationDto
+
+@{
+    ViewData["Title"] = "Predict price";
+}
+<h1>@ViewData["Title"]</h1>
+
+<p>Our model has a score of @Html.DisplayFor(model => model.RSquare)</p>
+<p>@Html.DisplayFor(model => model.PricePrediction)</p>

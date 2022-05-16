@@ -9,6 +9,6 @@ namespace Application.Models
     {
         double ModelEvaluation { get; set; }
         float ModelPricePrediction { get; set; }
-        ModelScoreRequestObject getModel();
+        ModelScoreRequestObject GetModel();
     }
 }

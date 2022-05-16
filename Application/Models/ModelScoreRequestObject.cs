@@ -37,10 +37,10 @@ namespace Application.Models
             _modelEvaluator = modelEvaluator;
             _pricePredictor = pricePredictor;
         }
-        public ModelScoreRequestObject getModel()
+        public ModelScoreRequestObject GetModel()
         {
-            IDataView data = _dataLoader.LoadDataset();
-            DataOperationsCatalog.TrainTestData dataSplit = _dataManager.SplitDataIntoTwoGroups(data);
+            var data = _dataLoader.LoadDataset();
+            var dataSplit = _dataManager.SplitDataIntoTwoGroups(data);
             var trainData = _dataManager.CreateTrainingSet(dataSplit);
             var testData = _dataManager.CreateTestSet(dataSplit);
             var pipeline = _mlPipeline.CreateMlPipeline();

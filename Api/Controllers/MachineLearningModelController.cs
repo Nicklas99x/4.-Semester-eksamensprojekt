@@ -27,7 +27,7 @@ namespace Api.Controllers
         [HttpGet("/ModelAccuracy")]
         public ModelEvaluationDto GetModelScore()
         {
-            var modelScore = _requestObject.getModel();
+            var modelScore = _requestObject.GetModel();
 
             var modelDto = new ModelEvaluationDto();
             {
@@ -36,14 +36,6 @@ namespace Api.Controllers
             }
             return modelDto;
         }
-
-        // GET api/<MachineLearningModelController>/5
-        //[HttpGet("/Price")]
-        //public Single GetPredictedHousePrice()
-        //{
-            
-        //    return predictedPrice;
-        //}
 
         // POST api/<MachineLearningModelController>
         //[HttpPost]
