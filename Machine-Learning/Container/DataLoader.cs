@@ -35,7 +35,7 @@ namespace Machine_Learning.Container
 
             using (SqlConnection connection = new SqlConnection(connString))
             {
-                string cmdText = "load_data";
+                string cmdText = "execute load_data";
                 SqlCommand cmd = new SqlCommand(cmdText, connection);
                 cmd.CommandType = CommandType.StoredProcedure;
                 string sqlData = cmd.CommandText.ToString();
