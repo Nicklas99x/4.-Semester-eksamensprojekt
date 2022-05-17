@@ -1,4 +1,5 @@
 ﻿using Contract.InterfaceServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace MVC.Controllers
 {
+    [Authorize()]
     public class PriceController : Controller
     {
         private readonly IModelEvaluationService _modelEvaluationService;
