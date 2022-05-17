@@ -38,6 +38,15 @@ namespace MVC
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
 
+            services.Configure<IdentityOptions>(options =>
+            {
+                options.Password.RequiredLength = 14;
+                options.Password.RequiredUniqueChars = 4;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireNonAlphanumeric = false;
+            });
+
             services.AddHttpClient();
             
             services.AddScoped<IModelEvaluationService, ModelEvaluationService>();
