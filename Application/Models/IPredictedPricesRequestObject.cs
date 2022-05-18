@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Application.Models
 {
-    public interface IModelScoreRequestObject
+    public interface IPredictedPricesRequestObject
     {
-        double ModelEvaluation { get; set; }
-        ModelScoreRequestObject GetModel();
+        List<PredictedPricesRequestObject> GetPredictedPrices();
     }
 }

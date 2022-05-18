@@ -10,7 +10,6 @@ namespace Application.Models
     public class ModelScoreRequestObject : IModelScoreRequestObject
     {
         public double ModelEvaluation { get; set; }
-        public float ModelPricePrediction { get; set; }
         protected readonly IDataLoader _dataLoader;
         protected readonly IDataManager _dataManager;
         protected readonly IMLPipeline _mlPipeline;
@@ -46,10 +45,8 @@ namespace Application.Models
             var pipeline = _mlPipeline.CreateMlPipeline();
             var mlModel = _modelTrainer.TrainModel(trainData, pipeline);
             var result = _modelEvaluator.EvaluateModel(testData, mlModel);
-            var priceprediction = _pricePredictor.MakePredictionWithTheModel(mlModel);
             ModelScoreRequestObject request = new ModelScoreRequestObject();
             request.ModelEvaluation = result;
-            request.ModelPricePrediction = priceprediction;
             return request;
 
         }

@@ -32,15 +32,8 @@ namespace Api.Controllers
             var modelDto = new ModelEvaluationDto();
             {
                 modelDto.RSquare = modelScore.ModelEvaluation;
-                modelDto.PricePrediction = modelScore.ModelPricePrediction;
             }
             return modelDto;
         }
-
-        // POST api/<MachineLearningModelController>
-        //[HttpPost]
-        //public void Post([FromBody] string value)
-        //{
-        //}
     }
 }

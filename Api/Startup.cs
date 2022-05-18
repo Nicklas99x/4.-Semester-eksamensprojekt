@@ -46,6 +46,7 @@ namespace Api
 
             services.AddScoped<IModelScoreRequestObject, ModelScoreRequestObject>();
             services.AddScoped<IPricePredictionRequestObject, PricePredictionRequestObject>();
+            services.AddScoped<IPredictedPricesRequestObject, PredictedPricesRequestObject>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

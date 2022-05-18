@@ -1,5 +1,6 @@
 using Contract.InterfaceServices;
 using Infrastructure;
+using Infrastructure.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -50,6 +51,7 @@ namespace MVC
             services.AddHttpClient();
             
             services.AddScoped<IModelEvaluationService, ModelEvaluationService>();
+            services.AddScoped<IPricePredictionService, PricePredictionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
