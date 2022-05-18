@@ -26,23 +26,23 @@ namespace Machine_Learning
             _housePriceData = housePriceData;
             _predictionOutput = predictionOutput;
         }
-        public Single MakePredictionWithTheModel(TransformerChain<RegressionPredictionTransformer<Microsoft.ML.Trainers.LinearRegressionModelParameters>> mLModel)
+        public float MakePredictionWithTheModel(TransformerChain<RegressionPredictionTransformer<Microsoft.ML.Trainers.FastTree.FastTreeRegressionModelParameters>> mLModel)
         {
             var predictionData = context.Model.CreatePredictionEngine<HousePriceData, PredictionOutput>(mLModel);
 
             var input = new HousePriceData
             {
                 Price = 2000000,
-                Bedrooms = 3,
-                Bathrooms = 2,
-                Sqft_living = 75,
-                Sqft_lot = 3050,
-                Floors = 1,
-                Waterfront = 0,
-                View = 4,
-                Grade = 9,
-                Sqft_basement = 720,
-                Sqft_living15 = 4110
+                Bedrooms = "3",
+                Bathrooms = "2",
+                Sqft_living = "75",
+                Sqft_lot = "3050",
+                Floors = "1",
+                Waterfront = "0",
+                View = "4",
+                Grade = "9",
+                Sqft_basement = "720",
+                Sqft_living15 = "4110"
             };
             var predictionWithData = predictionData.Predict(input);
             var predictionResult = predictionWithData.Score;
