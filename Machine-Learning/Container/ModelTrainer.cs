@@ -12,7 +12,7 @@ namespace Machine_Learning.Container
     public class ModelTrainer : IModelTrainer
     {
         protected readonly MLContext context = new MLContext();
-        public TransformerChain<RegressionPredictionTransformer<Microsoft.ML.Trainers.LinearRegressionModelParameters>> TrainModel(IDataView trainData, EstimatorChain<RegressionPredictionTransformer<Microsoft.ML.Trainers.LinearRegressionModelParameters>> pipeline)
+        public TransformerChain<RegressionPredictionTransformer<Microsoft.ML.Trainers.FastTree.FastTreeRegressionModelParameters>> TrainModel(IDataView trainData, EstimatorChain<RegressionPredictionTransformer<Microsoft.ML.Trainers.FastTree.FastTreeRegressionModelParameters>> pipeline)
         {
             var mLModel = pipeline.Fit(trainData);
             return mLModel;

@@ -12,7 +12,7 @@ namespace Machine_Learning.Container
     public class ModelEvaluator : IModelEvaluator
     {
         protected readonly MLContext context = new MLContext();
-        public double EvaluateModel(IDataView testData, TransformerChain<RegressionPredictionTransformer<Microsoft.ML.Trainers.LinearRegressionModelParameters>> mLModel)
+        public double EvaluateModel(IDataView testData, TransformerChain<RegressionPredictionTransformer<Microsoft.ML.Trainers.FastTree.FastTreeRegressionModelParameters>> mLModel)
         {
             IDataView predictions = mLModel.Transform(testData);
             var metrics = context.Regression.Evaluate(predictions);
