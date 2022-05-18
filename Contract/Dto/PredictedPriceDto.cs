@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Contract
+namespace Contract.Dto
 {
-    public class ModelEvaluationDto
+    public class PredictedPriceDto
     {
-        public double RSquare { get; set; }       
+        public float PredictedPrice { get; set; }
     }
 }

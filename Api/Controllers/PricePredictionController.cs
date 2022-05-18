@@ -14,19 +14,27 @@ namespace Api.Controllers
     [ApiController]
     public class PricePredictionController : ControllerBase
     {
-        private readonly IPricePredictionRequestObject _pricepredictionRequestObject;
+        private readonly IPricePredictionRequestObject _pricePredictionRequestObject;
+        private readonly IPredictedPricesRequestObject _predictedPricesRequestObject;
 
-        public PricePredictionController(IPricePredictionRequestObject pricepredictionRequestObject)
+        public PricePredictionController(IPricePredictionRequestObject pricePredictionRequestObject, IPredictedPricesRequestObject predictedPricesRequestObject)
         {
-            _pricepredictionRequestObject = pricepredictionRequestObject;
+            _pricePredictionRequestObject = pricePredictionRequestObject;
+            _predictedPricesRequestObject = predictedPricesRequestObject;
         }
 
         // GET: api/<PricePredictionController>
-        //[HttpGet]
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
+        [HttpGet("/GetPricePrediction")]
+        public List<PredictedPriceDto> Get()
+        {
+            var predictedPrices = _predictedPricesRequestObject.GetPredictedPrices();
+            var dto = new List<PredictedPriceDto>();
+            predictedPrices.ForEach(a => dto.Add(new PredictedPriceDto
+            {
+                PredictedPrice = a.PredictedPrices
+            }));
+            return dto;
+        }
 
         //// GET api/<PricePredictionController>/5
         //[HttpGet("{id}")]
@@ -40,7 +48,7 @@ namespace Api.Controllers
         public void Post([FromBody] PricePredictionDto pricePredictionDto)
         {
             
-            _pricepredictionRequestObject.PredictPrice(new PricePredictionRequestObject 
+            _pricePredictionRequestObject.PredictPrice(new PricePredictionRequestObject 
             {
                 Id = pricePredictionDto.Id,
                 Date = pricePredictionDto.Date,
@@ -64,12 +72,6 @@ namespace Api.Controllers
                 Sqft_lot15 = pricePredictionDto.Sqft_lot15
             });
         }
-
-        // PUT api/<PricePredictionController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
 
         //// DELETE api/<PricePredictionController>/5
         //[HttpDelete("{id}")]

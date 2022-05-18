@@ -1,0 +1,27 @@
+﻿@model List<Contract.Dto.PredictedPriceDto>
+
+@{
+    ViewData["Title"] = "Predicted prices";
+}
+
+<h1>Your Pricepredictions</h1>
+<p>Here you can see your houseprice predictions</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <p>Houseprice:</p>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PredictedPrice)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
