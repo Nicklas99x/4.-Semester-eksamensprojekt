@@ -5,109 +5,138 @@
 }
 
 <h1>Predict houseprice</h1>
+<style>
+    #hide {
+        display: none;
+    }
 
+    #myLabel:hover + #hide {
+        display: block;
+        color: red;
+    }
+</style>
 <div class="row">
     <div class="col-md-4">
         <form asp-action="PredictNewPrice">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
+                <label id="myLabel" asp-for="Id" class="control-label"></label>
+                <p id="hide">Id is the id of the house</p>
+                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" asp-for="Id" class="form-control" />
                 <span asp-validation-for="Id" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Date" class="control-label"></label>
-                <input asp-for="Date" class="form-control" />
+                <label id="myLabel" asp-for="Date" class="control-label"></label>
+                <p id="hide">Date is the date when the house was put up for sale</p>
+                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" asp-for="Date" class="form-control" />
                 <span asp-validation-for="Date" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Bedrooms" class="control-label"></label>
-                <input asp-for="Bedrooms" class="form-control" />
+                <label id="myLabel" asp-for="Bedrooms" class="control-label"></label>
+                <p id="hide">Number of bedrooms in the house</p>
+                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" asp-for="Bedrooms" class="form-control" />
                 <span asp-validation-for="Bedrooms" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Bathrooms" class="control-label"></label>
-                <input asp-for="Bathrooms" class="form-control" />
+                <label id="myLabel" asp-for="Bathrooms" class="control-label"></label>
+                <p id="hide">Number if bathrooms in the house</p>
+                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" asp-for="Bathrooms" class="form-control" />
                 <span asp-validation-for="Bathrooms" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Sqft_living" class="control-label"></label>
-                <input asp-for="Sqft_living" class="form-control" />
+                <label id="myLabel" asp-for="Sqft_living" class="control-label"></label>
+                <p id="hide">Square footage of the house measured in sqft</p>
+                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" asp-for="Sqft_living" class="form-control" />
                 <span asp-validation-for="Sqft_living" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Sqft_lot" class="control-label"></label>
-                <input asp-for="Sqft_lot" class="form-control" />
+                <label id="myLabel" asp-for="Sqft_lot" class="control-label"></label>
+                <p id="hide">Square footage of the lot the house belongs to measured in sqft</p>
+                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" asp-for="Sqft_lot" class="form-control" />
                 <span asp-validation-for="Sqft_lot" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Floors" class="control-label"></label>
-                <input asp-for="Floors" class="form-control" />
+                <label id="myLabel" asp-for="Floors" class="control-label"></label>
+                <p id="hide">The number of floor levels in the house</p>
+                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" asp-for="Floors" class="form-control" />
                 <span asp-validation-for="Floors" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Waterfront" class="control-label"></label>
-                <input asp-for="Waterfront" class="form-control" />
+                <label id="myLabel" asp-for="Waterfront" class="control-label"></label>
+                <p id="hide">Set this to 0 if the house is not located near water otherwise set it to 1</p>
+                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" asp-for="Waterfront" class="form-control" />
                 <span asp-validation-for="Waterfront" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="View" class="control-label"></label>
-                <input asp-for="View" class="form-control" />
+                <label id="myLabel" asp-for="View" class="control-label"></label>
+                <p id="hide">Has the house been viewed. yes = 1. no = 0</p>
+                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" asp-for="View" class="form-control" />
                 <span asp-validation-for="View" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Condition" class="control-label"></label>
-                <input asp-for="Condition" class="form-control" />
+                <label id="myLabel" asp-for="Condition" class="control-label"></label>
+                <p id="hide">How good is the overall condition of the house</p>
+                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" asp-for="Condition" class="form-control" />
                 <span asp-validation-for="Condition" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Grade" class="control-label"></label>
-                <input asp-for="Grade" class="form-control" />
+                <label id="myLabel" asp-for="Grade" class="control-label"></label>
+                <p id="hide">Grade of the house</p>
+                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" asp-for="Grade" class="form-control" />
                 <span asp-validation-for="Grade" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Sqft_above" class="control-label"></label>
-                <input asp-for="Sqft_above" class="form-control" />
+                <label id="myLabel" asp-for="Sqft_above" class="control-label"></label>
+                <p id="hide">Sqft of the house excluding any basement</p>
+                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" asp-for="Sqft_above" class="form-control" />
                 <span asp-validation-for="Sqft_above" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Sqft_basement" class="control-label"></label>
-                <input asp-for="Sqft_basement" class="form-control" />
+                <label id="myLabel" asp-for="Sqft_basement" class="control-label"></label>
+                <p id="hide">Sqft of basement in the house (set this to 0 if there is no basement)</p>
+                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" asp-for="Sqft_basement" class="form-control" />
                 <span asp-validation-for="Sqft_basement" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Yr_built" class="control-label"></label>
-                <input asp-for="Yr_built" class="form-control" />
+                <label id="myLabel" asp-for="Yr_built" class="control-label"></label>
+                <p id="hide">The year when the house was built</p>
+                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" asp-for="Yr_built" class="form-control" />
                 <span asp-validation-for="Yr_built" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Yr_renovated" class="control-label"></label>
+                <label id="myLabel" asp-for="Yr_renovated" class="control-label"></label>
+                <p id="hide">The year where it was most recently renovated (set to 0 if it has NOT been renovated ever)</p>
                 <input asp-for="Yr_renovated" class="form-control" />
                 <span asp-validation-for="Yr_renovated" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Zipcode" class="control-label"></label>
-                <input asp-for="Zipcode" class="form-control" />
+                <label id="myLabel" asp-for="Zipcode" class="control-label"></label>
+                <p id="hide">Zipcode of the city/county that the house is located in</p>
+                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" asp-for="Zipcode" class="form-control" />
                 <span asp-validation-for="Zipcode" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Lat" class="control-label"></label>
-                <input asp-for="Lat" class="form-control" />
+                <label id="myLabel" asp-for="Lat" class="control-label"></label>
+                <p id="hide">Lattitude position coordinate of the house</p>
+                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" asp-for="Lat" class="form-control" />
                 <span asp-validation-for="Lat" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Long1" class="control-label"></label>
-                <input asp-for="Long1" class="form-control" />
+                <label id="myLabel" asp-for="Long1" class="control-label"></label>
+                <p id="hide">Longittude position coordinate of the house</p>
+                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" asp-for="Long1" class="form-control" />
                 <span asp-validation-for="Long1" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Sqft_living15" class="control-label"></label>
-                <input asp-for="Sqft_living15" class="form-control" />
+                <label id="myLabel" asp-for="Sqft_living15" class="control-label"></label>
+                <p id="hide">Sqft of the house in the year 2015</p>
+                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" asp-for="Sqft_living15" class="form-control" />
                 <span asp-validation-for="Sqft_living15" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Sqft_lot15" class="control-label"></label>
-                <input asp-for="Sqft_lot15" class="form-control" />
+                <label id="myLabel" asp-for="Sqft_lot15" class="control-label"></label>
+                <p id="hide">Sqft of the lot in 2015</p>
+                <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1').replace(/^0[^.]/, '0');" asp-for="Sqft_lot15" class="form-control" />
                 <span asp-validation-for="Sqft_lot15" class="text-danger"></span>
             </div>
             <div class="form-group">
