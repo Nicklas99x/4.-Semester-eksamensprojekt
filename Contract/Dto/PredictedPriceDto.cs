@@ -8,6 +8,7 @@ namespace Contract.Dto
 {
     public class PredictedPriceDto
     {
+        //DataTransferObject which transfers data between Api and frontend
         public float PredictedPrice { get; set; }
     }
 }

@@ -14,6 +14,7 @@ namespace Api.Controllers
     [ApiController]
     public class PricePredictionController : ControllerBase
     {
+        //DependencyInjection
         private readonly IPricePredictionRequestObject _pricePredictionRequestObject;
         private readonly IPredictedPricesRequestObject _predictedPricesRequestObject;
 
@@ -25,8 +26,10 @@ namespace Api.Controllers
 
         // GET: api/<PricePredictionController>
         [HttpGet("/GetPricePrediction")]
+        //GetRequest
         public List<PredictedPriceDto> Get()
         {
+            //GetPrices
             var predictedPrices = _predictedPricesRequestObject.GetPredictedPrices();
             var dto = new List<PredictedPriceDto>();
             predictedPrices.ForEach(a => dto.Add(new PredictedPriceDto
@@ -36,18 +39,14 @@ namespace Api.Controllers
             return dto;
         }
 
-        //// GET api/<PricePredictionController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
         // POST api/<PricePredictionController>
         [HttpPost("/Prediction")]
+        //HttpPostRequest
         public void Post([FromBody] PricePredictionDto pricePredictionDto)
         {
-            
+            //Make a new PricepredictionDto
+            //and set its propery values to be equal to the values found
+            //inside the request object
             _pricePredictionRequestObject.PredictPrice(new PricePredictionRequestObject 
             {
                 Id = pricePredictionDto.Id,
@@ -72,11 +71,5 @@ namespace Api.Controllers
                 Sqft_lot15 = pricePredictionDto.Sqft_lot15
             });
         }
-
-        //// DELETE api/<PricePredictionController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
     }
 }

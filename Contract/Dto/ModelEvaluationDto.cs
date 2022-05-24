@@ -8,6 +8,7 @@ namespace Contract
 {
     public class ModelEvaluationDto
     {
+        //DataTransferObject which transfers data between Api and frontend
         public double RSquare { get; set; }       
     }
 }

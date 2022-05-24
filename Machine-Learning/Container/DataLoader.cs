@@ -13,38 +13,24 @@ namespace Machine_Learning.Container
 {
     public class DataLoader : IDataLoader
     {
+        //Mke a MlContext and HousePriceData model
         protected readonly MLContext context = new MLContext();
         protected readonly HousePriceData _housePriceData;
 
         public DataLoader()
         {
         }
-
         public DataLoader(HousePriceData housePriceData)
         {
             _housePriceData = housePriceData;
         }
         public IDataView LoadDataset()
         {
+            //Load dataset from a flatfile of the extension .csv and reutnr as a IDataView
             IDataView data = context.Data.LoadFromTextFile<HousePriceData>("C:/Users/nicklas/source/repos/4.-Semester-eksamensprojekt/Machine-Learning/Data/kc_house_data.csv",
                 hasHeader: true,
                 separatorChar: ',');
             return data;
-
-            //var connString = "Data Source=NICKLASPC;Initial Catalog=EksamensprojektDB;User ID=Machine-Learner25;Password=Mir@cleUser234987";
-
-            //using (SqlConnection connection = new SqlConnection(connString))
-            //{
-            //    string cmdText = "execute load_data";
-            //    SqlCommand cmd = new SqlCommand(cmdText, connection);
-            //    cmd.CommandType = CommandType.StoredProcedure;
-            //    string sqlData = cmd.CommandText.ToString();
-            //    var dataLoader = context.Data.CreateDatabaseLoader<HousePriceData>();
-            //    var dbSource = new DatabaseSource(SqlClientFactory.Instance, connString, sqlData);
-            //    var data = dataLoader.Load(dbSource);
-            //    return data;
-            //}
-
         }
     }
 }

@@ -13,6 +13,7 @@ namespace Machine_Learning
 {
     public class PricePredictor : IPricePredictor
     {
+        //Perform a prediction
         protected readonly MLContext context = new MLContext();
         protected readonly HousePriceData _housePriceData;
         protected readonly PredictionOutput _predictionOutput;

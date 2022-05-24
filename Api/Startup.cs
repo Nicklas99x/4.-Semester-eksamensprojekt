@@ -37,6 +37,7 @@ namespace Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Api", Version = "v1" });
             });
+            //Injecting requestobjects and methods which are needed
             services.AddScoped<IDataLoader, DataLoader>();
             services.AddScoped<IDataManager, DataManager>();
             services.AddScoped<IMLPipeline, MlPipeline>();

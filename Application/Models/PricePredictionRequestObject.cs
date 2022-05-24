@@ -12,6 +12,7 @@ namespace Application.Models
 {
     public class PricePredictionRequestObject : IPricePredictionRequestObject
     {
+        //Properies that match a model from the core of this app (HousePriceData)
         public string Id { get; set; }
         public string Date { get; set; }
         public double Price { get; set; }
@@ -33,18 +34,23 @@ namespace Application.Models
         public string Long1 { get; set; }
         public string Sqft_living15 { get; set; }
         public string Sqft_lot15 { get; set; }
+        //Inject dependencies
         protected readonly IDataLoader _dataLoader;
         protected readonly IDataManager _dataManager;
         protected readonly IMLPipeline _mlPipeline;
         protected readonly IModelTrainer _modelTrainer;
+        //Add HousePriceData and PredictionOutput which are defined under the project
+        //Machine-Learning
         protected readonly HousePriceData _housePriceData;
         protected readonly PredictionOutput _predictionOutput;
+        //Add an instance of MlContext to perform prediction
         protected readonly MLContext context = new MLContext();
 
         public PricePredictionRequestObject()
         {
         }
 
+        //Constructor injection of dependencies
         public PricePredictionRequestObject(
             IDataLoader dataLoader,
             IDataManager dataManager,
@@ -57,18 +63,24 @@ namespace Application.Models
             _modelTrainer = modelTrainer;
         }
 
+        //Predicting price
         public void PredictPrice(PricePredictionRequestObject pricePredictionRequestObject)
         {
+            //Using DI to call these methods
             var data = _dataLoader.LoadDataset();
             var dataSplit = _dataManager.SplitDataIntoTwoGroups(data);
             var trainData = _dataManager.CreateTrainingSet(dataSplit);
             var pipeline = _mlPipeline.CreateMlPipeline();
             var mlModel = _modelTrainer.TrainModel(trainData, pipeline);
 
+            //Create a predictionengine to perform a prediction from our machinelearning model
             var predictionData = context.Model.CreatePredictionEngine<HousePriceData, PredictionOutput>(mlModel);
 
+            //Create prediction input
             var price = new HousePriceData
             {
+                //Set the input to the inserted input from the frontend which is
+                //Picked up by the Api and sent into here
                 Id = pricePredictionRequestObject.Id,
                 Date = pricePredictionRequestObject.Date,
                 Bedrooms = pricePredictionRequestObject.Bedrooms,
@@ -91,18 +103,24 @@ namespace Application.Models
                 Sqft_lot15 = pricePredictionRequestObject.Sqft_lot15
             };
 
+            //Perform prediction
             var prediction = predictionData.Predict(price);
+            //Store the predicted value in this varible of type float
             var Price = prediction.Score;
 
+            //Constring (will be moved later)
             var connString = "Data Source=NICKLASPC;Initial Catalog=EksamensprojektDB;User ID=Machine-Learner25;Password=Mir@cleUser234987";
 
             using (SqlConnection connection = new SqlConnection(connString))
             {
                 //This WONT be sql injected by attackers/hacker
+                //Parameterized query
                 string cmdText = $"Insert into PredictedPrices (Price) Values(@Price)";
                 SqlCommand cmd = new SqlCommand(cmdText, connection);
+                //Add parameter to protect against SqlInjection
                 cmd.Parameters.AddWithValue("Price", Price);
                 connection.Open();
+                //Execute the query in the SqlCommand
                 cmd.ExecuteNonQuery();
                 connection.Close();
             }

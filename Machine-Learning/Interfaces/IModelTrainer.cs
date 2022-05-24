@@ -10,6 +10,7 @@ namespace Machine_Learning.Interfaces
 {
     public interface IModelTrainer
     {
+        //Interface
         TransformerChain<RegressionPredictionTransformer<Microsoft.ML.Trainers.FastTree.FastTreeRegressionModelParameters>> TrainModel(IDataView trainData, EstimatorChain<RegressionPredictionTransformer<Microsoft.ML.Trainers.FastTree.FastTreeRegressionModelParameters>> pipeline);
     }
 }

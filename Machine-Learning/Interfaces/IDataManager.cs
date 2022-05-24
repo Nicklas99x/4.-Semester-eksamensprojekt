@@ -9,6 +9,7 @@ namespace Machine_Learning.Interfaces
 {
     public interface IDataManager
     {
+        //Interface
         DataOperationsCatalog.TrainTestData SplitDataIntoTwoGroups(IDataView data);
         IDataView CreateTrainingSet(DataOperationsCatalog.TrainTestData split);
         IDataView CreateTestSet(DataOperationsCatalog.TrainTestData split);

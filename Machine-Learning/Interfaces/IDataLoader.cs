@@ -9,6 +9,7 @@ namespace Machine_Learning.Interfaces
 {
     public interface IDataLoader
     {
+        //Interface
         IDataView LoadDataset();
     }
 }
