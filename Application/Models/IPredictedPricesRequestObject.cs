@@ -8,6 +8,7 @@ namespace Application.Models
 {
     public interface IPredictedPricesRequestObject
     {
+        //A method with the return type List of object PredictedPriceRequestObject
         List<PredictedPricesRequestObject> GetPredictedPrices();
     }
 }

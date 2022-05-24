@@ -14,6 +14,7 @@ namespace Machine_Learning.Container
         protected readonly MLContext context = new MLContext();
         public TransformerChain<RegressionPredictionTransformer<Microsoft.ML.Trainers.FastTree.FastTreeRegressionModelParameters>> TrainModel(IDataView trainData, EstimatorChain<RegressionPredictionTransformer<Microsoft.ML.Trainers.FastTree.FastTreeRegressionModelParameters>> pipeline)
         {
+            //Train the model
             var mLModel = pipeline.Fit(trainData);
             return mLModel;
         }

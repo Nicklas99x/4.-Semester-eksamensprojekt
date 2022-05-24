@@ -9,6 +9,7 @@ namespace Machine_Learning.Interfaces
 {
     public interface IMLPipeline
     {
+        //Interface
         EstimatorChain<RegressionPredictionTransformer<Microsoft.ML.Trainers.FastTree.FastTreeRegressionModelParameters>> CreateMlPipeline();
     }
 }

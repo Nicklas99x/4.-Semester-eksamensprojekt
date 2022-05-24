@@ -8,6 +8,7 @@ namespace Application.Models
 {
     public interface IPricePredictionRequestObject
     {
+        //A void method with a object of type PricePredictionRequestObject as inputparameter
         void PredictPrice(PricePredictionRequestObject pricePredictionRequestObject);
     }
 }

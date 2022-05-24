@@ -10,6 +10,7 @@ namespace Machine_Learning.Interfaces
 {
     public interface IModelEvaluator
     {
+        //Interface
         double EvaluateModel(IDataView testData, TransformerChain<RegressionPredictionTransformer<Microsoft.ML.Trainers.FastTree.FastTreeRegressionModelParameters>> mLModel);
     }
 }

@@ -10,10 +10,12 @@ namespace Machine_Learning
 {
     public class HousePriceData
     {
+        //Model of the dataset which is used to train and evaluate the model
         [LoadColumn(0)]
         public string Id { get; set; }
         [LoadColumn(1)]
         public string Date { get; set; }
+        //his is the LabelColumn
         [LoadColumn(2), ColumnName("Label")]
         public float Price { get; set; }
         [LoadColumn(3)]

@@ -13,6 +13,8 @@ namespace MVC.Controllers
     [Authorize()]
     public class PredictionController : Controller
     {
+        //Dependency injection of interface so that methods
+        //from this interface's implementation can be accessed by this controller
         private readonly IPricePredictionService _pricePredictionService;
 
         public PredictionController(IPricePredictionService pricePredictionService)
@@ -24,6 +26,7 @@ namespace MVC.Controllers
         // GET: PredictionController
         public async Task<IActionResult> GetPredictions()
         {
+            //Call method GetPredictedPrices
             var predictedPrices = await _pricePredictionService.GetPredictedPrices();
             return View(predictedPrices);
         }
@@ -36,54 +39,14 @@ namespace MVC.Controllers
 
         // POST: PredictionController/Create
         [HttpPost]
+        //Prevent crosssite request forgery
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> PredictNewPrice(IFormCollection collection, PricePredictionDto pricePredictionDto)
         {
             try
             {
+                //Call method PredictPrice
                 var price = await _pricePredictionService.PredictPrice(pricePredictionDto);
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: PredictionController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: PredictionController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: PredictionController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: PredictionController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
                 return RedirectToAction(nameof(Index));
             }
             catch

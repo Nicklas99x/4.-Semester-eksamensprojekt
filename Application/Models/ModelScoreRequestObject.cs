@@ -9,7 +9,9 @@ namespace Application.Models
 {
     public class ModelScoreRequestObject : IModelScoreRequestObject
     {
+        //Property
         public double ModelEvaluation { get; set; }
+        //DependencyInjection
         protected readonly IDataLoader _dataLoader;
         protected readonly IDataManager _dataManager;
         protected readonly IMLPipeline _mlPipeline;
@@ -21,6 +23,7 @@ namespace Application.Models
         {
         }
 
+        //ConstructorInjection
         public ModelScoreRequestObject(
             IDataLoader dataLoader,
             IDataManager dataManager,
@@ -38,6 +41,7 @@ namespace Application.Models
         }
         public ModelScoreRequestObject GetModel()
         {
+            //Calling methods from the implementation of the injected interfaces
             var data = _dataLoader.LoadDataset();
             var dataSplit = _dataManager.SplitDataIntoTwoGroups(data);
             var trainData = _dataManager.CreateTrainingSet(dataSplit);
@@ -45,8 +49,13 @@ namespace Application.Models
             var pipeline = _mlPipeline.CreateMlPipeline();
             var mlModel = _modelTrainer.TrainModel(trainData, pipeline);
             var result = _modelEvaluator.EvaluateModel(testData, mlModel);
+            //Make a new request object per request
             ModelScoreRequestObject request = new ModelScoreRequestObject();
+            //Set the property ModelEvaluation to be equal to the result of the method
+            //EvauateModel which returns a value as type double. This value will be returned
+            //To the frontend via the API
             request.ModelEvaluation = result;
+            //Return the created requestobject which now holds the value of the parameter result
             return request;
 
         }

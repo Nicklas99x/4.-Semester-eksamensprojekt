@@ -12,6 +12,8 @@ namespace MVC.Controllers
     [Authorize()]
     public class PriceController : Controller
     {
+        //Dependency injection of interface so that methods
+        //from this interface's implementation can be accessed by this controller
         private readonly IModelEvaluationService _modelEvaluationService;
 
         public PriceController(IModelEvaluationService modelEvaluationService)
@@ -22,35 +24,9 @@ namespace MVC.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
+            //Call method GetModelScore
             var data = await _modelEvaluationService.GetModelScore();
             return View(data);
-        }
-
-        // GET: PriceController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: PriceController/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: PriceController/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
         }
     }
 }
